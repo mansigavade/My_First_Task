@@ -1,0 +1,29 @@
+ Automation with Python Scripts:
+Identify a repetitive task in your workflow and create Python scripts to automate it. This
+could include tasks like file organization, data cleaning, or system maintenance
+
+import os
+import shutil
+def organize_files_by_type(directory):
+if not os.path.exists(directory):
+print(f"The directory {directory} does not exist.")
+return
+for filename in os.listdir(directory):
+file_path = os.path.join(directory, filename)
+if os.path.isdir(file_path):
+continue
+file_extension = filename.split('.')[-1] if '.' in filename else 'others'
+folder_path = os.path.join(directory, file_extension)
+if not os.path.exists(folder_path):
+os.makedirs(folder_path)
+print(f"Created folder: {folder_path}")
+new_file_path = os.path.join(folder_path, filename)
+shutil.move(file_path, new_file_path)
+print(f"Moved {filename} to {folder_path}")
+def main():
+directory = input("Enter the directory to organize: ")
+organize_files_by_type(directory)
+if __name__ == "__main__":
+main()
+codealpha@mansi gavade - Jupyter Notebook http://localhost:8888/notebooks/codealpha%40mansi%20gavade.ipynb
+3 of 7 08-02-2025, 19:44
